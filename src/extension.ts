@@ -29,7 +29,6 @@ import { DidactPanelSerializer } from './didactPanelSerializer';
 import { didactManager, VIEW_TYPE } from './didactManager';
 import { getRedHatService } from '@redhat-developer/vscode-redhat-telemetry/lib';
 import { DidactTelemetry } from './Telemetry';
-import { sendTextToOutputChannel } from './extensionFunctions';
 
 const DIDACT_VIEW = 'didact.tutorials';
 
@@ -107,7 +106,7 @@ export async function activate(context: vscode.ExtensionContext): Promise<any> {
 	vscode.window.registerWebviewPanelSerializer(VIEW_TYPE, new DidactPanelSerializer(context));
 
 	// send the startup event to telemetry tracking
-	(await didactTelemetry.getTelemetryServiceInstance()).sendStartupEvent();
+	//(await didactTelemetry.getTelemetryServiceInstance()).sendStartupEvent();
 
 	// register the default tutorials if the setting is set to true
 	const installTutorialsAtStartup : boolean = getAutoInstallDefaultTutorialsSetting();
@@ -124,11 +123,11 @@ export async function activate(context: vscode.ExtensionContext): Promise<any> {
 	// create the view
 	createIntegrationsView();
 	const isDidactReload : boolean = context.workspaceState.get("isDidactReload", false);
-	sendTextToOutputChannel("Get isDidactReload setting value: " + isDidactReload);
+	//sendTextToOutputChannel("Get isDidactReload setting value: " + isDidactReload);
 	// open at startup if setting is true
 	//const openAtStartup : boolean = getOpenAtStartupSetting();
 	if (!isDidactReload) {
-		sendTextToOutputChannel("loading default didact");
+		//sendTextToOutputChannel("loading default didact");
 		await extensionFunctions.openDidactWithDefault();
 	}
 	context.workspaceState.update("isDidactReload", true);
