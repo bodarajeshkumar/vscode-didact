@@ -29,6 +29,7 @@ import { DidactPanelSerializer } from './didactPanelSerializer';
 import { didactManager, VIEW_TYPE } from './didactManager';
 import { getRedHatService } from '@redhat-developer/vscode-redhat-telemetry/lib';
 import { DidactTelemetry } from './Telemetry';
+import { sendTextToOutputChannel } from './extensionFunctions';
 
 const DIDACT_VIEW = 'didact.tutorials';
 
@@ -123,14 +124,15 @@ export async function activate(context: vscode.ExtensionContext): Promise<any> {
 	// create the view
 	createIntegrationsView();
 	const isDidactReload : boolean = context.workspaceState.get("isDidactReload", false);
-	
+	sendTextToOutputChannel("Get isDidactReload setting value: " + isDidactReload);
 	// open at startup if setting is true
 	//const openAtStartup : boolean = getOpenAtStartupSetting();
 	if (!isDidactReload) {
+		sendTextToOutputChannel("loading default didact");
 		await extensionFunctions.openDidactWithDefault();
 	}
 	context.workspaceState.update("isDidactReload", true);
-	
+
 	return {
 		extendMarkdownIt(md: any) {
 			const taskLists = require('markdown-it-task-lists');
