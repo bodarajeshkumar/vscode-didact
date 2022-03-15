@@ -122,15 +122,15 @@ export async function activate(context: vscode.ExtensionContext): Promise<any> {
 
 	// create the view
 	createIntegrationsView();
-	const workspacereload : boolean = vscode.workspace.getConfiguration().get("workspacereload", false);
+	const isDidactReload : boolean = context.workspaceState.get("isDidactReload", false);
 	
 	// open at startup if setting is true
 	//const openAtStartup : boolean = getOpenAtStartupSetting();
-	if (!workspacereload) {
+	if (!isDidactReload) {
 		await extensionFunctions.openDidactWithDefault();
 	}
-	vscode.workspace.getConfiguration().update("workspacereload", true);
-
+	context.workspaceState.update("isDidactReload", true);
+	
 	return {
 		extendMarkdownIt(md: any) {
 			const taskLists = require('markdown-it-task-lists');
