@@ -42,7 +42,7 @@ export async function processInputs(incoming : string, extensionPath? : string) 
 			throw new Error('No command Id provided');
 		} else {
 			// track command Id
-			await didactExtension.getTelemetry().sendCommandTracking(commandId);
+			//await didactExtension.getTelemetry().sendCommandTracking(commandId);
 
 			// handle either a project-based or extension/src-based file path
 			if (query.projectFilePath) {

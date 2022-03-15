@@ -3,7 +3,7 @@
 	"displayName": "Didact",
 	"description": "Didact Tutorial Tools for Visual Studio Code",
 	"license": "Apache-2.0",
-	"version": "0.4.4",
+	"version": "0.4.5",
 	"icon": "icon/logo.png",
 	"publisher": "redhat",
 	"preview": true,
@@ -87,7 +87,7 @@
 					},
 					"redhat.telemetry.enabled": {
 						"type": "boolean",
-						"default": null,
+						"default": false,
 						"markdownDescription": "Enable usage data and errors to be sent to Red Hat servers. Read our [privacy statement](https://developers.redhat.com/article/tool-data-collection).",
 						"scope": "window"
 					}

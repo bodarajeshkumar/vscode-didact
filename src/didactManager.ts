@@ -20,7 +20,7 @@ import {ExtensionContext, Uri, ViewColumn } from 'vscode';
 import { DidactPanel } from './didactPanel';
 import { isAsciiDoc, collectElements, revealOrStartDidactByURI, getActualUri } from './extensionFunctions';
 import { HeadingNode } from './nodeProvider';
-import * as didactExtension from './extension';
+//import * as didactExtension from './extension';
 
 export const DEFAULT_TITLE_VALUE = `Didact Tutorial`;
 export const VIEW_TYPE = 'didact';
@@ -61,7 +61,7 @@ export class DidactManager {
 				panel.handleEvents();
 				await panel.configure(reload);
 			}
-			await didactExtension.getTelemetry().sendDidactOpenTypeTracking(didactUri.fsPath);
+			//await didactExtension.getTelemetry().sendDidactOpenTypeTracking(didactUri.fsPath);
 			return panel;
 		}
 		return undefined;

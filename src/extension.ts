@@ -27,8 +27,8 @@ import { clearRegisteredTutorials, getOpenAtStartupSetting,
 import { DidactUriCompletionItemProvider } from './didactUriCompletionItemProvider';
 import { DidactPanelSerializer } from './didactPanelSerializer';
 import { didactManager, VIEW_TYPE } from './didactManager';
-import { getRedHatService } from '@redhat-developer/vscode-redhat-telemetry/lib';
-import { DidactTelemetry } from './Telemetry';
+//import { getRedHatService } from '@redhat-developer/vscode-redhat-telemetry/lib';
+//import { DidactTelemetry } from './Telemetry';
 
 const DIDACT_VIEW = 'didact.tutorials';
 
@@ -37,11 +37,11 @@ export const DEFAULT_TUTORIAL_NAME = "Didact Demo";
 
 export const didactTutorialsProvider = new DidactNodeProvider();
 export let didactTreeView : vscode.TreeView<SimpleNode>;
-let didactTelemetry: DidactTelemetry;
+//let didactTelemetry: DidactTelemetry;
 
 export async function activate(context: vscode.ExtensionContext): Promise<any> {
 	
-	didactTelemetry = new DidactTelemetry((await getRedHatService(context)).getTelemetryService());
+	//didactTelemetry = new DidactTelemetry((await getRedHatService(context)).getTelemetryService());
 
 	extensionFunctions.initialize(context);
 
@@ -176,6 +176,4 @@ export async function revealTreeItem(node: SimpleNode | null | undefined) : Prom
 	}
 }
 
-export function getTelemetry(): DidactTelemetry {
-	return didactTelemetry;
-}
+
